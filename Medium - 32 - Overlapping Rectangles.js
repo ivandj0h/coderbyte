@@ -1,0 +1,31 @@
+function OverlappingRectangles(strArr) {
+    var matches = strArr[0].match(/-?\d+,-?\d+/g);
+    var rectangle1 = matches.splice(0, 4).map(function (e) { return e.split(',').map(Number); });
+    rectangle1.sort(function (a, b) { return a[0] - b[0]; });
+    var rectangle2 = matches.map(function (e) { return e.split(',').map(Number); });
+    rectangle2.sort(function (a, b) { return a[0] - b[0]; });
+
+    var r1 = parseRectangle(rectangle1);
+    var r2 = parseRectangle(rectangle2);
+    var r1Width = r1.right - r1.left;
+    var r1Height = r1.bottom - r1.top;
+    var overlapWidth = (r1.right > r2.right) ? r2.right - r1.left : r1.right - r2.left;
+    var overlapHeight = (r1.bottom > r2.bottom) ? r2.bottom - r1.top : r1.bottom - r2.top;
+    var overlapArea = overlapWidth * overlapHeight;
+
+    if (overlapArea < 0)
+        return 0;
+    else
+        return Math.floor(r1Width / overlapWidth) * Math.floor(r1Height / overlapHeight);
+}
+
+// X-Axis:left-----------------right
+// Y-Axis:
+        //top
+        //'
+        //'
+        //bottom
+function parseRectangle(rectangle) {
+    var arr = [rectangle[0][1], rectangle[1][1]].sort();
+    return { left: rectangle[0][0], right: rectangle[2][0], top: arr[0], bottom: arr[1] };
+}
