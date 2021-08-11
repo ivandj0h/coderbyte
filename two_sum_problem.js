@@ -6,6 +6,10 @@ For example, if the array is [3, 5, 2, -4, 8, 11] and the sum is 7, your program
 // our two sum function which will return
 // all pairs in the array that sum up to S
 
+/*
+We can write a faster algorithm that will find pairs that sum to S in linear time. The algorithm below makes use of hash tables which have a constant lookup time. As we pass through each element in the array, we check to see if S minus the current element exists in the hash table. We only need to loop through the array once, resulting in a running time of O(n) since each lookup and insertion in a hash table is O(1).
+*/
+
 const arr = [3, 5, 2, -4, 8, 11];
 const target = 7;
 function twoSum(arr, S) {
