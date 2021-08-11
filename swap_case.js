@@ -1,15 +1,14 @@
-function SwapCase(str) { 
-  var result = '';
+function SwapCase(str) {
+  var result = "";
   for (var i = 0; i < str.length; i++) {
     var c = str[i];
-    if (c >= 'a' && c <= 'z') {
+    if (c >= "a" && c <= "z") {
       result += c.toUpperCase();
-    }
-    else if (c >= 'A' && c <= 'Z') {
+    } else if (c >= "A" && c <= "Z") {
       result += c.toLowerCase();
-    }
-    else
-      result += c;
+    } else result += c;
   }
   return result;
 }
+
+console.log(SwapCase("arjuna DJOH"));

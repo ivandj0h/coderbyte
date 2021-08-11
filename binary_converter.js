@@ -1,8 +1,26 @@
-function BinaryConverter(str) { 
-  var decimal=0;
-  for(var i=str.length-1,j=0;i>=0;i--,j++)
-  {
-    decimal+=parseInt(str[i])*Math.pow(2,j);
+/*
+Using the JavaScript language, have the function BinaryConverter(str) 
+return the decimal form of the binary value. For example:
+if 101 is passed return 5, or if 1000 is passed return 8. 
+
+Won't work if binary exceeds normal 8-bit length without spaces
+*/
+function BinaryConverter(str) {
+  // var decimal = 0;
+  // for (var i = str.length - 1, j = 0; i >= 0; i--, j++) {
+  //   decimal += parseInt(str[i]) * Math.pow(2, j);
+  // }
+  // return decimal;
+
+  count = 0;
+  arr2 = str.split("").reverse().join("");
+  arr = [1, 2, 4, 8, 16, 32, 64, 128];
+  for (var i = 0; i < arr2.length; i++) {
+    if (arr2[i] == "1") {
+      count += arr[i];
+    }
   }
-  return decimal;        
+  return count;
 }
+
+console.log(BinaryConverter("1000"));
